@@ -14,17 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
         cell.className = "col";
         cell.addEventListener("click", () => {
           clicked = false;
-          clickCheck();
+          clickCheck(cell);
         });
-      };
+      }
     }
     return board;
-  }
+  };
 
-
-  const clickCheck = () => {
+  const clickCheck = (cellClicked) => {
     if (clicked === false) {
-      cell.setAttribute("background", randomColor());
+      cellClicked.setAttribute("background", randomColor());
       clicked = true;
     } else {
       clicked = false;
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < 6; i++) {
       hexColor += hexValue[(Math.floor(Math.random() * 16))];
     }
-    return hexColor.toString();
+    return hexColor;
   };
 });
 
