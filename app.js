@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let cell = divRow.appendChild(document.createElement("div"));
         cell.className = "col";
         cell.addEventListener("click", () => {
-          console.log("Clicked!!!")
+          clicked = false;
+          clickCheck();
         });
       };
     }
@@ -21,18 +22,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+  const clickCheck = () => {
+    if (clicked === false) {
+      cell.setAttribute("background", randomColor());
+      clicked = true;
+    } else {
+      clicked = false;
+
+    }
+  };
+
+  const randomColor = () => {
+    const hexValue = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];  //Hexadecimal goes up to 0-9 the A-F
+    let hexColor = "#";
+    for (let i = 0; i < 6; i++) {
+      hexColor += hexValue[(Math.floor(Math.random() * 16))];
+    }
+    return hexColor.toString();
+  };
 });
 
 //grid in js 
 //grid parameter size can change
 
 
-const clickCheck = () => {
-  if (clicked === false) {
-    clickDiv.style.backgroundColor = "red";
-    clicked = true;
-  } else {
-    clickDiv.style.backgroundColor = "white";
-    clicked = false;
-  }
-};
