@@ -6,24 +6,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function createBoard(rowSize, colSize) {
     for (let i = 0; i < rowSize; i++) {
-      let divRow = document.createElement("div");
+      const divRow = document.createElement("div");
       divRow.setAttribute("class", "row")
       board.appendChild(divRow);
       for (let j = 0; j < colSize; j++) {
-        let cell = divRow.appendChild(document.createElement("div"));
+        const cell = divRow.appendChild(document.createElement("div"));
         cell.className = "col";
         cell.addEventListener("click", () => {
-          clicked = false;
-          clickCheck(cell);
+          cell.style.background = randomColor();
+
         });
       }
     }
     return board;
   };
 
-  const clickCheck = (cellClicked) => {
+  const clickCheck = (clickedCell) => {
     if (clicked === false) {
-      cellClicked.setAttribute("background", randomColor());
+
+      // cellClicked.setAttribute("background", randomColor());
       clicked = true;
     } else {
       clicked = false;
@@ -37,11 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < 6; i++) {
       hexColor += hexValue[(Math.floor(Math.random() * 16))];
     }
-    return hexColor;
+    return hexColor.toString();
   };
 });
-
-//grid in js 
-//grid parameter size can change
 
 
